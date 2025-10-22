@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Beyonda Tourism / بيوندا للسياحة</title>
+  <link rel="icon" href="assets/logo.jpeg" />
+  <!-- Google font (Tajawal مناسب للعربية) -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --accent: #0ea5e9; /* sky-500 */
+      --wh: #25D366; /* whatsapp green */
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Tajawal", system-ui, Arial, sans-serif;
+      background:var(--bg);
+      color:#0f172a;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+
+    /* Layout */
+    .container{max-width:1100px;margin:0 auto;padding:20px}
+    header{background:var(--card);box-shadow:0 2px 6px rgba(2,6,23,0.06);display:flex;align-items:center;justify-content:space-between;padding:18px;border-radius:0 0 10px 10px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:56px;height:56px;object-fit:contain;border-radius:8px}
+    .brand h1{margin:0;font-size:1.15rem;color:var(--accent)}
+    nav a{margin-left:14px;text-decoration:none;color:var(--muted);font-weight:600}
+    .lang-btn{background:var(--accent);color:#fff;padding:8px 12px;border-radius:8px;border:none;cursor:pointer}
+    /* Hero */
+    .hero{background:linear-gradient(90deg,#dbeafe,#e0f2fe);padding:48px;border-radius:12px;margin-top:18px;text-align:center}
+    .hero h2{margin:0;font-size:1.9rem}
+    .hero p{color:var(--muted);margin-top:10px;max-width:860px;margin-left:auto;margin-right:auto}
+    .actions{margin-top:18px;display:flex;gap:10px;justify-content:center}
+    .btn{padding:10px 18px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+
+    /* Sections */
+    section{margin-top:28px}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+    .card{background:var(--card);padding:18px;border-radius:10px;box-shadow:0 4px 12px rgba(2,6,23,0.04)}
+    .card h4{margin:0 0 8px 0;color:var(--accent)}
+    .muted{color:var(--muted)}
+
+    /* contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px;align-items:start}
+    .map iframe{width:100%;height:260px;border:0;border-radius:8px}
+    .socials{display:flex;gap:8px;margin-top:12px}
+    .icon{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:8px;background:#f1f5f9;color:#0f172a;text-decoration:none}
+
+    /* footer */
+    footer{margin-top:28px;text-align:center;padding:22px;color:var(--muted);font-size:0.95rem}
+
+    /* floating whatsapp */
+    .whatsapp{
+      position:fixed;left:20px;bottom:20px;background:var(--wh);color:#fff;padding:14px;border-radius:50%;box-shadow:0 8px 30px rgba(37,211,102,0.25);display:flex;align-items:center;justify-content:center;text-decoration:none;z-index:1000
+    }
+
+    /* rtl and ltr helper */
+    .rtl{direction:rtl;text-align:right}
+    .ltr{direction:ltr;text-align:left}
+
+    /* responsive */
+    @media (max-width:880px){
+      header{flex-direction:column;gap:10px;align-items:flex-start}
+      .contact-grid{grid-template-columns:1fr}
+      .brand h1{font-size:1rem}
+      .hero h2{font-size:1.5rem}
+    }
+  </style>
+</head>
+<body class="rtl" id="page-root">
+  <!-- Header -->
+  <header class="container">
+    <div class="brand">
+      <img src="assets/logo.jpeg" alt="Beyonda Logo" />
+      <div>
+        <h1 id="site-title">بيوندا للسياحة</h1>
+        <div class="muted" id="site-sub">خدمات السفر والدراسة والحجوزات</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:12px">
+      <nav class="muted" id="main-nav">
+        <a href="#home" data-key="nav_home">الرئيسية</a>
+        <a href="#services" data-key="nav_services">خدماتنا</a>
+        <a href="#about" data-key="nav_about">من نحن</a>
+        <a href="#contact" data-key="nav_contact">اتصل بنا</a>
+      </nav>
+
+      <button class="lang-btn" id="lang-toggle" aria-label="toggle language">English</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="container hero">
+      <h2 id="hero-title">رحلتك تبدأ من هنا ✈️</h2>
+      <p id="hero-text">نوفر لك كل ما تحتاجه لرحلة دراسية أو سياحية ناجحة — قبول جامعات، تأشيرات، حجوزات طيران وفنادق وباقات سياحية مميزة.</p>
+
+      <div class="actions">
+        <button class="btn primary" id="cta-study">الدراسة بالخارج</button>
+        <button class="btn ghost" id="cta-book">احجز الآن</button>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="container">
+      <h3 data-key="services_title">خدماتنا</h3>
+      <div class="cards" id="services-cards">
+        <div class="card">
+          <h4 data-key="s1_title">الدراسة بالخارج</h4>
+          <p class="muted" data-key="s1_desc">مساعدة في القبول والتأشيرات والسكن في أوزبكستان وروسيا وبيلاروسيا.</p>
+        </div>
+        <div class="card">
+          <h4 data-key="s2_title">السياحة الخارجية</h4>
+          <p class="muted" data-key="s2_desc">باقات سياحية للعائلات والأفراد مع برامج يومية مرشدة.</p>
+        </div>
+        <div class="card">
+          <h4 data-key="s3_title">حجز الطيران والفنادق</h4>
+          <p class="muted" data-key="s3_desc">أفضل الأسعار وخيارات دفع مرنة وسرعة في الحجز.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="container">
+      <h3 data-key="about_title">من نحن</h3>
+      <p id="about-text">شركة بيوندا للسياحة متخصصة في تقديم خدمات السفر والدراسة بالخارج، وحجوزات الطيران والفنادق، وتنظيم الرحلات التعليمية والسياحية إلى أوزبكستان وروسيا وبيلاروسيا. هدفنا جعل رحلتك سهلة وآمنة وممتعة.</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="container">
+      <h3 data-key="contact_title">تواصل معنا</h3>
+
+      <div class="contact-grid">
+        <div>
+          <p><strong data-key="address_label">العنوان:</strong> <span id="address-text">طنطا تاون مول – الدور السادس – مكتب 15</span></p>
+          <p><strong data-key="phone_label">واتساب:</strong> <a id="phone-link" href="https://wa.me/201092840568" class="muted">+20 109 284 0568</a></p>
+          <p class="muted" data-key="hours">ساعات العمل: الأحد - الخميس 9 ص - 6 م</p>
+
+          <div class="socials">
+            <a class="icon" title="Facebook">f</a>
+            <a class="icon" title="Instagram">ig</a>
+            <a class="icon" title="Telegram">tg</a>
+          </div>
+        </div>
+
+        <div class="map">
+          <h4 data-key="map_title">موقعنا على الخريطة</h4>
+          <iframe title="Beyonda Map" src="https://www.google.com/maps?q=Tanta%20Town%20Mall&output=embed" loading="lazy"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating WhatsApp -->
+  <a class="whatsapp" href="https://wa.me/201092840568" target="_blank" rel="noopener noreferrer" title="تواصل عبر واتساب">
+    <!-- simple svg whatsapp icon -->
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.48A11.8 11.8 0 0012.06.5C6.1.5 1.48 4.94 1 10.37c-.17 1.96.46 4.03 1.6 5.8L.5 23.5l7.69-2.01a11.92 11.92 0 004.85 1.02c5.97 0 10.59-4.44 11.07-9.86.48-5.43-3.33-10.05-8.59-10.05z" fill="#fff"/>
+      <path d="M17.2 14.18c-.28-.14-1.67-.82-1.93-.91-.26-.09-.45-.14-.64.14-.19.28-.73.91-.9 1.1-.17.19-.35.21-.63.07-.28-.14-1.17-.43-2.23-1.38-.82-.73-1.37-1.62-1.53-1.9-.16-.28-.02-.43.13-.57.13-.13.28-.35.42-.52.14-.17.19-.28.28-.46.09-.19.05-.36-.03-.5-.08-.14-.64-1.55-.88-2.14-.23-.56-.47-.48-.64-.49l-.55-.01c-.19 0-.5.07-.76.36-.26.29-1 1-1 2.45s1.03 2.85 1.17 3.05c.14.19 2.02 3.08 4.9 4.32 2.09.92 2.96.99 3.2.98.22-.01.7-.29.8-.57.1-.28.1-.52.07-.57-.03-.04-.24-.08-.52-.22z" fill="#25D366"/>
+    </svg>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container muted">
+      <div id="footer-text">© <span id="year"></span> Beyonda Tourism — All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- Language data and script -->
+  <script>
+    // dictionary for English translations
+    const translations = {
+      en: {
+        dir:'ltr',
+        siteTitle: 'Beyonda Tourism',
+        siteSub: 'Travel, study abroad & bookings',
+        nav_home: 'Home',
+        nav_services: 'Services',
+        nav_about: 'About',
+        nav_contact: 'Contact',
+        hero_title: 'Your journey starts here ✈️',
+        hero_text: 'We provide everything you need for a successful study or travel trip — admissions, visas, flight & hotel bookings, and tailored travel packages.',
+        cta_study: 'Study Abroad',
+        cta_book: 'Book Now',
+        services_title: 'Our Services',
+        s1_title: 'Study Abroad',
+        s1_desc: 'Assistance with university admissions, visas and housing in Uzbekistan, Russia, and Belarus.',
+        s2_title: 'International Tourism',
+        s2_desc: 'Tailored travel packages for families and individuals with guided tours.',
+        s3_title: 'Flight & Hotel Booking',
+        s3_desc: 'Best prices and fast booking for your next trip.',
+        about_title: 'About Us',
+        about_text: 'Beyonda Tourism is specialized in travel and study abroad services, flight & hotel bookings, and organizing educational and tourism trips to Uzbekistan, Russia, and Belarus. Our goal is to make your trip easy, safe and memorable.',
+        contact_title: 'Contact Us',
+        address_label: 'Address:',
+        address_text: 'Tanta Town Mall – 6th Floor – Office 15',
+        phone_label: 'WhatsApp:',
+        map_title: 'Our Location',
+        footer: '© {year} Beyonda Tourism — All rights reserved.',
+        langBtn: 'العربية'
+      },
+      ar: {
+        dir:'rtl',
+        siteTitle: 'بيوندا للسياحة',
+        siteSub: 'خدمات السفر والدراسة والحجوزات',
+        nav_home: 'الرئيسية',
+        nav_services: 'خدماتنا',
+        nav_about: 'من نحن',
+        nav_contact: 'اتصل بنا',
+        hero_title: 'رحلتك تبدأ من هنا ✈️',
+        hero_text: 'نوفر لك كل ما تحتاجه لرحلة دراسية أو سياحية ناجحة — قبول جامعات، تأشيرات، حجوزات طيران وفنادق وباقات سياحية مميزة.',
+        cta_study: 'الدراسة بالخارج',
+        cta_book: 'احجز الآن',
+        services_title: 'خدماتنا',
+        s1_title: 'الدراسة بالخارج',
+        s1_desc: 'مساعدة في القبول والتأشيرات والسكن في أوزبكستان وروسيا وبيلاروسيا.',
+        s2_title: 'السياحة الخارجية',
+        s2_desc: 'باقات سياحية للعائلات والأفراد مع برامج يومية مرشدة.',
+        s3_title: 'حجز الطيران والفنادق',
+        s3_desc: 'أفضل الأسعار وخيارات دفع مرنة وسرعة في الحجز.',
+        about_title: 'من نحن',
+        about_text: 'شركة بيوندا للسياحة متخصصة في تقديم خدمات السفر والدراسة بالخارج، وحجوزات الطيران والفنادق، وتنظيم الرحلات التعليمية والسياحية إلى أوزبكستان وروسيا وبيلاروسيا. هدفنا جعل رحلتك سهلة وآمنة وممتعة.',
+        contact_title: 'تواصل معنا',
+        address_label: 'العنوان:',
+        address_text: 'طنطا تاون مول – الدور السادس – مكتب 15',
+        phone_label: 'واتساب:',
+        map_title: 'موقعنا على الخريطة',
+        footer: '© {year} Beyonda Tourism — كل الحقوق محفوظة.',
+        langBtn: 'English'
+      }
+    };
+
+    // initialize
+    const root = document.getElementById('page-root');
+    const yearSpan = document.getElementById('year');
+    yearSpan.textContent = new Date().getFullYear();
+
+    // set initial language (Arabic)
+    let currentLang = 'ar';
+
+    function applyLang(lang){
+      const d = translations[lang];
+      currentLang = lang;
+      // direction
+      root.classList.remove('rtl','ltr');
+      root.classList.add(lang === 'ar' ? 'rtl' : 'ltr');
+      document.documentElement.lang = lang === 'ar' ? 'ar' : 'en';
+      document.documentElement.dir = d.dir;
+
+      // text replacements by data-key or id
+      // replace top title/sub
+      document.getElementById('site-title').textContent = d.siteTitle;
+      document.getElementById('site-sub').textContent = d.siteSub;
+
+      // nav links and headings (data-key)
+      document.querySelectorAll('[data-key]').forEach(el=>{
+        const key = el.getAttribute('data-key');
+        if(key && d[key] !== undefined) el.textContent = d[key];
+      });
+
+      // specific ids
+      document.getElementById('hero-title').textContent = d.hero_title;
+      document.getElementById('hero-text').textContent = d.hero_text;
+      document.getElementById('cta-study').textContent = d.cta_study;
+      document.getElementById('cta-book').textContent = d.cta_book;
+
+      // services (we used data keys)
+      // about
+      document.getElementById('about-text').textContent = d.about_text || d.aboutText || translations[lang].about_text;
+      // contact address & phone label
+      document.getElementById('address-text').textContent = d.address_text || translations[lang].address_text;
+      document.getElementById('phone-link').textContent = (lang === 'ar') ? '+20 109 284 0568' : '+20 109 284 0568';
+
+      // lang button
+      document.getElementById('lang-toggle').textContent = d.langBtn || (lang === 'ar' ? 'English' : 'العربية');
+
+      // footer
+      const foot = (d.footer || '').replace('{year}', new Date().getFullYear());
+      document.getElementById('footer-text').textContent = foot;
+    }
+
+    // event
+    document.getElementById('lang-toggle').addEventListener('click', ()=>{
+      applyLang(currentLang === 'ar' ? 'en' : 'ar');
+    });
+
+    // start
+    applyLang(currentLang);
+  </script>
+</body>
+</html>
